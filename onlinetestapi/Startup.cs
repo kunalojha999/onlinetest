@@ -28,8 +28,15 @@ namespace onlinetestapi
         {
             services.AddControllers();
             services.AddDbContext<gladiatorContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DbCon")));
-
-        }
+      services.AddCors(options =>
+      {
+        options.AddPolicy("CorsPolicy",
+            builder => builder.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            );
+      });
+    }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -41,7 +48,9 @@ namespace onlinetestapi
 
             app.UseRouting();
 
-            app.UseAuthorization();
+      app.UseCors("CorsPolicy");
+
+      app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

@@ -17,6 +17,7 @@ namespace onlinetestapi.Models
 
         public int Id { get; set; }
         public string Subname { get; set; }
+        public string Description { get; set; }
 
         public virtual ICollection<Questions> Questions { get; set; }
         public virtual ICollection<Reports> Reports { get; set; }

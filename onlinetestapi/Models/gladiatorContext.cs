@@ -131,6 +131,10 @@ namespace onlinetestapi.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
+                entity.Property(e => e.Description)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Subname)
                     .IsRequired()
                     .HasColumnName("subname")

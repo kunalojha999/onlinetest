@@ -43,5 +43,11 @@ namespace onlinetestapi.Controllers
         return Unauthorized();
 
     }
+    [HttpGet]
+    [Route("view")]
+    public IActionResult getall()
+    {
+      return Ok(db.Users);
+    }
   }
 }
