@@ -22,12 +22,12 @@ export class UserloginComponent implements OnInit {
   })
   }
   submitForm() {
-    console.log(this.userloginForm.value)
     this.userloginservice.login(this.userloginForm!.value).subscribe(res => {
-      sessionStorage.setItem('Email',res.Email)
+      sessionStorage.setItem('Email',this.userloginForm.value.Email)
       this.userloginservice.subject.next(true);
       console.log('login successful'),
       console.log(res)
+      console.log(sessionStorage.getItem('Email'))
       this.router.navigate(['home']);
     },
     error => {    

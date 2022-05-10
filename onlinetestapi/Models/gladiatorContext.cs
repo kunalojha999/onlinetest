@@ -111,7 +111,7 @@ namespace onlinetestapi.Models
 
                 entity.Property(e => e.Useremail)
                     .HasColumnName("useremail")
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Sub)
@@ -148,7 +148,7 @@ namespace onlinetestapi.Models
                     .HasName("PK__Users__A9D1053529421723");
 
                 entity.Property(e => e.Email)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.City)
@@ -165,7 +165,7 @@ namespace onlinetestapi.Models
 
                 entity.Property(e => e.Password)
                     .IsRequired()
-                    .HasMaxLength(10)
+                    .HasMaxLength(20)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Qualification)

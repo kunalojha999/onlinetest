@@ -17,7 +17,7 @@ namespace onlinetestapi.Models
         public string Email { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
-        public long? Mobile { get; set; }
+        public long Mobile { get; set; }
         public string City { get; set; }
         public DateTime? Dob { get; set; }
         public string State { get; set; }

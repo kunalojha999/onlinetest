@@ -11,33 +11,28 @@ height: inherit;
   margin-left: -50px;
   top: 8%;
   margin-top: 50px;">
-<!-- Default form login -->
-<form class="text-center">
+<form class="text-center" [formGroup]="userForm"(ngSubmit)="submitForm()" novalidate>
   <p class="h3 mb-4">Register</p>
   <br>
   <label for="name" style="float:left ;">Name</label>
-  <input type="text" id="Name" name="Name" class="form-control mb-4">
+  <input type="text" id="Name" name="Name" class="form-control mb-4"formControlName="Name">
   <label for="email" style="float:left ;">Email</label>
-  <input type="email" id="Email" name="email" class="form-control mb-4">
+  <input type="email" id="Email" name="email" class="form-control mb-4"formControlName="Email">
   <label for="Mobile" style="float:left;">Mobile</label>
-  <input type="number" id="Mobile" name="Mobile" class="form-control mb-4">
+  <input type="number" id="Mobile" name="Mobile" class="form-control mb-4"formControlName="Mobile">
   <label for="City" style="float:left;">City</label>
-  <input type="text" id="City" name="City" class="form-control mb-4">
+  <input type="text" id="City" name="City" class="form-control mb-4"formControlName="City">
   <label for="State" style="float:left;">State</label>
-  <input type="text" id="State" name="State" class="form-control mb-4">
+  <input type="text" id="State" name="State" class="form-control mb-4"formControlName="State">
   <label for="dob" style="float:left;">Date of Birth</label>
-  <input type="date" id="dob" name="dob" class="form-control mb-4">
+  <input type="date" id="dob" name="dob" class="form-control mb-4"formControlName="Dob">
   <label for="Qual" style="float:left;">Qualification</label>
-  <input type="text" id="Qual" name="Qual" class="form-control mb-4">
+  <input type="text" id="Qual" name="Qual" class="form-control mb-4"formControlName="Qualification">
   <label for="YOC" style="float:left;">Year of Completion</label>
-  <input type="text" id="YOC" name="YOC" class="form-control mb-4">  
+  <input type="number" id="YOC" name="YOC" class="form-control mb-4"formControlName="Year">  
   <label for="pass" style="float:left;">Password</label>
-  <input type="text" name="pass" id="Password" class="form-control mb-4">
-  <label for="conpass" style="float:left;">Confirm Password</label>
-  <input type="text" name="conpass" id="ConPassword" class="form-control mb-4">
-  <!-- Sign in button -->
+  <input type="text" name="pass" id="Password" class="form-control mb-4"formControlName="Password">
   <button mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>
 </form>
   </mdb-card-body>
 </mdb-card>
-<!-- Default form login -->

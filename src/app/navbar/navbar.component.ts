@@ -10,7 +10,6 @@ import { UserloginService } from '../userlogin.service';
 })
 export class NavbarComponent implements OnInit {
   message:boolean=false;
-
   constructor(private service:UserloginService,private router:Router) { }
 
   ngOnInit(): void {
