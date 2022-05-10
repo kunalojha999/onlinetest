@@ -43,5 +43,9 @@ namespace onlinetestapi.Controllers
         return Unauthorized();
 
     }
+    public IActionResult test()
+    {
+      return Ok();
+    }
   }
 }
