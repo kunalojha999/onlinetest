@@ -10,19 +10,33 @@ import { UserloginService } from '../userlogin.service';
 })
 export class NavbarComponent implements OnInit {
   message:boolean=false;
-  constructor(private service:UserloginService,private router:Router) { }
+  email!:string|null
+  constructor(private service:UserloginService,private router:Router) { console.log(this.email)}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.service.recievedStatus().subscribe((data)=>{
-      this.message=data;//true
+      console.log(data);
+      this.email=data;//true
+      if(this.email!=null){
+        this.message=true
+      }
       });
   }
   logout()
   {
     console.log("hi");
     sessionStorage.removeItem('Email');
-    this.service.subject.next(false);
+    this.service.subject.next('');
     this.router.navigate(['login']); 
-  } 
-
+  }
+  checkempty(){
+    if(sessionStorage.getItem('Email')===null){
+      this.message=false
+    }
+    else if(sessionStorage.getItem('Email')!=null){
+      this.email=sessionStorage.getItem('Email')
+      this.message=true
+    }
+    return this.message
+  }
 }

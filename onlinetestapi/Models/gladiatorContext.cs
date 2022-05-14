@@ -152,7 +152,7 @@ namespace onlinetestapi.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.City)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Dob)
@@ -160,7 +160,7 @@ namespace onlinetestapi.Models
                     .HasColumnType("date");
 
                 entity.Property(e => e.Name)
-                    .HasMaxLength(30)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Password)
@@ -169,11 +169,11 @@ namespace onlinetestapi.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Qualification)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.State)
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
             });
 

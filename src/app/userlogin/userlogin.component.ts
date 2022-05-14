@@ -11,6 +11,7 @@ import { UserloginService } from '../userlogin.service';
 export class UserloginComponent implements OnInit {
   errorMessage!:string;
   userloginForm!: FormGroup;
+  email!:string|null
 
   constructor(private router:Router,public fb: FormBuilder,public userloginservice:UserloginService) { }
 
@@ -24,9 +25,9 @@ export class UserloginComponent implements OnInit {
   submitForm() {
     this.userloginservice.login(this.userloginForm!.value).subscribe(res => {
       sessionStorage.setItem('Email',this.userloginForm.value.Email)
-      this.userloginservice.subject.next(true);
+      this.email=sessionStorage.getItem('Email')
+      this.userloginservice.subject.next(this.email);
       console.log('login successful'),
-      console.log(res)
       console.log(sessionStorage.getItem('Email'))
       this.router.navigate(['home']);
     },

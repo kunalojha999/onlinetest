@@ -1,27 +1,26 @@
 <h2 style="text-align:center; margin-top: 40px; margin-left:40px ;">Welcome to quicktest choose from the given list of tests to evaluate yourself in a technology</h2>
-<mdb-card style="
-width: 50%;
-height: inherit;
-  position: relative;
-  left: 30%;
-  margin-left: -50px;
-  top: 20%;
-  margin-top: -120px;">
-  <mdb-card-body style="height: inherit; width:100%; position: relative;
-  left: 15%;
-  margin-left: -80px;
-  margin-top: -40px;">
-  <table cellPadding="10">
+
+  <table style="width: 50%;
+  height: inherit;
+    position: relative;
+    left: 30%;
+    margin-left: -50px;border-collapse: separate; border-spacing: 1.5cm 0.5em;" *ngFor="let s of subjects" cellPadding="5">
+    <mdb-card>
+  <mdb-card-body>
     <tr>
-      <td style="font-size: 30px;">Java</td>
-      <td style="padding-top:30px; padding-left:30px;"><button mdbBtn color="info" block="true" class="my-4" type="submit">Take Test</button></td>  
+      <td style="font-size: 30px;">{{s.subname}}</td>
+      <td *ngIf="message" style="padding-top:30px; padding-left:30px;"><button mdbBtn color="info" block="true" class="my-4" [routerLink]="['/question/', s.id]">Take Test</button></td>
+      <td *ngIf="!message" style="padding-top:30px; padding-left:30px;"><button mdbBtn color="info" block="true" class="my-4" [routerLink]="['/login']">Take Test</button></td>  
     </tr>
     <tr>
-      <td>Test yourself on concepts like collections thread and memory management</td>
+      <td>{{s.description}}</td>
     </tr>
-  </table>
-   </mdb-card-body>
+    <br>
+    <br>
+  </mdb-card-body>
 </mdb-card>
+  </table> 
+<!--
 <mdb-card style="
 width: 50%;
 height: inherit;
@@ -137,3 +136,4 @@ height: inherit;
   </table>
    </mdb-card-body>
 </mdb-card>
+-->

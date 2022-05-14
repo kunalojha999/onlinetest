@@ -16,13 +16,19 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule } from '@angular/material/dialog';
 import { UserhomeComponent } from './userhome/userhome.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TestComponent } from './test/test.component';
+import { UserreportComponent } from './userreport/userreport.component';
+import { ResetuserpasswordComponent } from './resetuserpassword/resetuserpassword.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserloginComponent,
     NavbarComponent,
     UserregisterComponent,
-    UserhomeComponent
+    UserhomeComponent,
+    TestComponent,
+    UserreportComponent,
+    ResetuserpasswordComponent,
   ],
   imports: [
     BrowserModule,

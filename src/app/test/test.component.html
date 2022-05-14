@@ -1,0 +1,69 @@
+<div *ngIf="test===1" style="margin-top: 100px; text-align:center ;">
+    <mdb-card style="
+    width: 50%;
+    height: inherit;
+      position: relative;
+      left: 28%;
+      margin-left: -50px;
+      top: 20%;
+      margin-top: -40px;">
+      <mdb-card-body>
+<h1 style="text-align:center;" >Instructions</h1>
+<br>
+<ul>
+<li><p style="text-align:left;font-size: 18;">The time limit for this test is 20 minutes</p></li>
+<li><p style="text-align:left;font-size: 18;">Revisiting previous questions is not allowed</p></li>
+<li><p style="text-align:left;font-size: 18;">This test has three levels</p></li>
+<li><p style="text-align:left;font-size: 18;">You can only proceed to the next level if you get two right answers in the previous level</p></li>
+<li><p style="text-align:left;font-size: 18;">Once the timer runs out your test will be auto submitted</p></li>
+</ul>
+<button mdbBtn color="info" class="my-4" (click)="startTest()">Start Test</button>
+</mdb-card-body></mdb-card>
+</div>
+<div *ngIf="test===2" style="margin-top: 100px; text-align:center ;">
+    <mdb-card style="
+    width: 50%;
+    height: inherit;
+      position: relative;
+      left: 28%;
+      margin-left: -50px;
+      top: 20%;
+      margin-top: -40px;">
+      <mdb-card-body>
+        <h1 style="text-align:center;" >{{hour}} Hour {{min}} Minutes {{timeLeft}} Seconds Left....</h1>
+<h2 style="margin-top: 50px; text-align:center ;">Level {{level}}</h2>
+<h2 style="text-align:left ; margin-left: 40px;">Question {{questionno+1}}</h2>
+<p style="text-align:left ; margin-left: 40px; font-size: 16px;">{{questions[questionno].body}}</p><br>
+<p style="text-align:left ; margin-left: 40px; font-size: 16px;">
+    <input type="radio" [value]="questions[questionno].c1" name="choice" [(ngModel)]="selectedchoice" ng-checked='clearchoice'/>{{questions[questionno].c1}}<br><br>
+    <input type="radio" [value]="questions[questionno].c2" name="choice" [(ngModel)]="selectedchoice"/>{{questions[questionno].c2}}<br><br>
+    <input type="radio" [value]="questions[questionno].c3" name="choice" [(ngModel)]="selectedchoice"/>{{questions[questionno].c3}}<br><br>
+    <input type="radio" [value]="questions[questionno].c4" name="choice" [(ngModel)]="selectedchoice"/>{{questions[questionno].c4}}
+</p>
+<div style="text-align:center ;"  *ngIf="questionno!=3&&questionno!=7&&questionno!=9">
+<button mdbBtn color="info" class="my-4"  (click)="increase()">Next</button>
+</div>
+<div style="text-align:center ;" *ngIf="questionno===3||questionno===7||questionno==9">
+    <button mdbBtn color="info" class="my-4"   (click)="submit()">Submit</button>
+</div>
+      </mdb-card-body></mdb-card>
+</div>
+<div style="margin-top: 100px; text-align:center;" *ngIf="test===3">
+    <mdb-card style="
+    width: 50%;
+    height: inherit;
+      position: relative;
+      left: 28%;
+      margin-left: -50px;
+      top: 20%;
+      margin-top: -40px;">
+      <mdb-card-body>
+        <h1>Test Report</h1>
+    <h2 style="text-align:center;" > Email: {{email}}</h2>
+        <h2 style="text-align:center;" > Score: {{score}}</h2>
+            <h2 style="text-align:center;" >Level: {{level}}</h2>
+                <h2 style="text-align:center;" >Subid: {{subid}}</h2>
+      </mdb-card-body></mdb-card>
+      <button mdbBtn color="info" class="my-4" routerLink="/home">Return to Home</button>
+</div>
+

@@ -43,6 +43,21 @@ namespace onlinetestapi.Controllers
         return Unauthorized();
 
     }
+    [HttpPut]
+    public IActionResult changePassword(UserLogin user)
+    {
+      var result = db.Users.FirstOrDefault(x => x.Email == user.Email);
+      if (result != null)
+      {
+        result.Password = user.Password;
+        db.Users.Update(result);
+        db.SaveChanges();
+        return Ok();
+      }
+      else
+        return BadRequest("User Not Found");
+    }
+
     [HttpGet]
     [Route("view")]
     public IActionResult getall()

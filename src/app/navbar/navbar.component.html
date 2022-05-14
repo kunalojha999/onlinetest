@@ -1,5 +1,5 @@
 <!--Navbar-->
-<mdb-card *ngIf="!message">
+<mdb-card *ngIf="!checkempty()">
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false" Height="400">
 
     <!-- Navbar brand -->
@@ -25,7 +25,7 @@
   </mdb-navbar>
 </mdb-card>
   <!--/.Navbar-->
-  <mdb-card *ngIf="message">
+  <mdb-card *ngIf="checkempty()">
     <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false" Height="400">
     
         <!-- Navbar brand -->
@@ -43,9 +43,10 @@
               <a class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>About Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>Report</a>
+                <a routerLink="report" class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>Report</a>
               </li>
           </ul>
+          <div style="color:white ;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">Welcome,{{email}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
           <button (click)="logout()" type="button" mdbBtn color="dark" mdbWavesEffect>Logout</button>
         </links>
         <!-- Collapsible content -->
