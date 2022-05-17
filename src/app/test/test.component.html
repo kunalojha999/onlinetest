@@ -20,7 +20,7 @@
 <button mdbBtn color="info" class="my-4" (click)="startTest()">Start Test</button>
 </mdb-card-body></mdb-card>
 </div>
-<div *ngIf="test===2" style="margin-top: 100px; text-align:center ;">
+<div *ngIf="test===2&&level===1" style="margin-top: 100px; text-align:center ;">
     <mdb-card style="
     width: 50%;
     height: inherit;
@@ -30,20 +30,76 @@
       top: 20%;
       margin-top: -40px;">
       <mdb-card-body>
-        <h1 style="text-align:center;" >{{hour}} Hour {{min}} Minutes {{timeLeft}} Seconds Left....</h1>
-<h2 style="margin-top: 50px; text-align:center ;">Level {{level}}</h2>
+        <h1 style="text-align:center;" >Level {{level}}</h1>
+<h2 style="margin-top: 50px; text-align:right ;">{{min}} Minutes {{timeLeft}} Seconds Left....</h2>
 <h2 style="text-align:left ; margin-left: 40px;">Question {{questionno+1}}</h2>
-<p style="text-align:left ; margin-left: 40px; font-size: 16px;">{{questions[questionno].body}}</p><br>
+<p style="text-align:left ; margin-left: 40px; font-size: 16px;">{{l1[questionno].body}}</p><br>
 <p style="text-align:left ; margin-left: 40px; font-size: 16px;">
-    <input type="radio" [value]="questions[questionno].c1" name="choice" [(ngModel)]="selectedchoice" ng-checked='clearchoice'/>{{questions[questionno].c1}}<br><br>
-    <input type="radio" [value]="questions[questionno].c2" name="choice" [(ngModel)]="selectedchoice"/>{{questions[questionno].c2}}<br><br>
-    <input type="radio" [value]="questions[questionno].c3" name="choice" [(ngModel)]="selectedchoice"/>{{questions[questionno].c3}}<br><br>
-    <input type="radio" [value]="questions[questionno].c4" name="choice" [(ngModel)]="selectedchoice"/>{{questions[questionno].c4}}
+    <input type="radio" [value]="l1[questionno].c1" name="choice" [(ngModel)]="selectedchoice"/>{{l1[questionno].c1}}<br><br>
+    <input type="radio" [value]="l1[questionno].c2" name="choice" [(ngModel)]="selectedchoice"/>{{l1[questionno].c2}}<br><br>
+    <input type="radio" [value]="l1[questionno].c3" name="choice" [(ngModel)]="selectedchoice"/>{{l1[questionno].c3}}<br><br>
+    <input type="radio" [value]="l1[questionno].c4" name="choice" [(ngModel)]="selectedchoice"/>{{l1[questionno].c4}}
 </p>
-<div style="text-align:center ;"  *ngIf="questionno!=3&&questionno!=7&&questionno!=9">
+<div style="text-align:center ;"  *ngIf="questionno<l1.length-1">
 <button mdbBtn color="info" class="my-4"  (click)="increase()">Next</button>
 </div>
-<div style="text-align:center ;" *ngIf="questionno===3||questionno===7||questionno==9">
+<div style="text-align:center ;" *ngIf="questionno===l1.length-1">
+    <button mdbBtn color="info" class="my-4"   (click)="submit()">Submit</button>
+</div>
+      </mdb-card-body></mdb-card>
+</div>
+<div *ngIf="test===2&&level===2" style="margin-top: 100px; text-align:center ;">
+    <mdb-card style="
+    width: 50%;
+    height: inherit;
+      position: relative;
+      left: 28%;
+      margin-left: -50px;
+      top: 20%;
+      margin-top: -40px;">
+      <mdb-card-body>
+
+        <h1 style="text-align:center;" >Level {{level}}</h1>
+<h2 style="margin-top: 50px; text-align:right ;">{{min}} Minutes {{timeLeft}} Seconds Left....</h2><h2 style="text-align:left ; margin-left: 40px;">Question {{questionno+1}}</h2>
+<p style="text-align:left ; margin-left: 40px; font-size: 16px;">{{l2[questionno].body}}</p><br>
+<p style="text-align:left ; margin-left: 40px; font-size: 16px;">
+    <input type="radio" [value]="l2[questionno].c1" name="choice" [(ngModel)]="selectedchoice" ng-checked='clearchoice'/>{{l2[questionno].c1}}<br><br>
+    <input type="radio" [value]="l2[questionno].c2" name="choice" [(ngModel)]="selectedchoice"/>{{l2[questionno].c2}}<br><br>
+    <input type="radio" [value]="l2[questionno].c3" name="choice" [(ngModel)]="selectedchoice"/>{{l2[questionno].c3}}<br><br>
+    <input type="radio" [value]="l2[questionno].c4" name="choice" [(ngModel)]="selectedchoice"/>{{l2[questionno].c4}}
+</p>
+<div style="text-align:center ;"  *ngIf="questionno<l2.length-1">
+<button mdbBtn color="info" class="my-4"  (click)="increase()">Next</button>
+</div>
+<div style="text-align:center ;" *ngIf="questionno===l2.length-1">
+    <button mdbBtn color="info" class="my-4"   (click)="submit()">Submit</button>
+</div>
+      </mdb-card-body></mdb-card>
+</div>
+<div *ngIf="test===2&&level===3" style="margin-top: 100px; text-align:center ;">
+    <mdb-card style="
+    width: 50%;
+    height: inherit;
+      position: relative;
+      left: 28%;
+      margin-left: -50px;
+      top: 20%;
+      margin-top: -40px;">
+      <mdb-card-body>
+        <h1 style="text-align:center;" >Level {{level}}</h1>
+<h2 style="margin-top: 50px; text-align:right ;">{{min}} Minutes {{timeLeft}} Seconds Left....</h2>
+<h2 style="text-align:left ; margin-left: 40px;">Question {{questionno+1}}</h2>
+<p style="text-align:left ; margin-left: 40px; font-size: 16px;">{{l3[questionno].body}}</p><br>
+<p style="text-align:left ; margin-left: 40px; font-size: 16px;">
+    <input type="radio" [value]="l3[questionno].c1" name="choice" [(ngModel)]="selectedchoice" ng-checked='clearchoice'/>{{l3[questionno].c1}}<br><br>
+    <input type="radio" [value]="l3[questionno].c2" name="choice" [(ngModel)]="selectedchoice"/>{{l3[questionno].c2}}<br><br>
+    <input type="radio" [value]="l3[questionno].c3" name="choice" [(ngModel)]="selectedchoice"/>{{l3[questionno].c3}}<br><br>
+    <input type="radio" [value]="l3[questionno].c4" name="choice" [(ngModel)]="selectedchoice"/>{{l3[questionno].c4}}
+</p>
+<div style="text-align:center ;"  *ngIf="questionno<l3.length-1">
+<button mdbBtn color="info" class="my-4"  (click)="increase()">Next</button>
+</div>
+<div style="text-align:center ;" *ngIf="questionno===l3.length-1">
     <button mdbBtn color="info" class="my-4"   (click)="submit()">Submit</button>
 </div>
       </mdb-card-body></mdb-card>
@@ -59,10 +115,9 @@
       margin-top: -40px;">
       <mdb-card-body>
         <h1>Test Report</h1>
-    <h2 style="text-align:center;" > Email: {{email}}</h2>
-        <h2 style="text-align:center;" > Score: {{score}}</h2>
-            <h2 style="text-align:center;" >Level: {{level}}</h2>
-                <h2 style="text-align:center;" >Subid: {{subid}}</h2>
+    <h3 style="text-align:center;" > Email: {{email}}</h3>
+        <h3 style="text-align:center;" > Score: {{score}}</h3>
+            <h3 style="text-align:center;" >Level: {{level}}</h3>
       </mdb-card-body></mdb-card>
       <button mdbBtn color="info" class="my-4" routerLink="/home">Return to Home</button>
 </div>

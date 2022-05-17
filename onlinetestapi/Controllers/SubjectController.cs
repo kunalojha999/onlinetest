@@ -22,5 +22,11 @@ namespace onlinetestapi.Controllers
     {
       return Ok(db.Subjects);
     }
+    [HttpGet("{subname}")]
+    public IActionResult getbyname(string subname)
+    {
+      var result = db.Subjects.FirstOrDefault(x => x.Subname == subname);
+      return Ok(result);
+    }
   }
 }

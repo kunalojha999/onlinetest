@@ -11,19 +11,42 @@ height: inherit;
   margin-left: -50px;
   top: 8%;
   margin-top: 50px;">
-<form class="text-center" [formGroup]="userForm"(ngSubmit)="submitForm()" novalidate>
+<form class="text-center" [formGroup]="userForm" (ngSubmit)="submitForm()" novalidate>
   <p class="h3 mb-4">Register</p>
   <br>
   <label for="name" style="float:left ;">Name</label>
   <input type="text" id="Name" name="Name" class="form-control mb-4"formControlName="Name">
+  <div *ngIf="!Name?.valid && (Name?.dirty ||Name?.touched)">
+    <div [hidden]="!Name?.errors?.['required']">
+      Name is required
+    </div>
+    </div>
   <label for="email" style="float:left ;">Email</label>
-  <input type="email" id="Email" name="email" class="form-control mb-4"formControlName="Email">
+  <input type="text" id="Email" name="email" class="form-control mb-4"formControlName="Email">
+  <div *ngIf="!Email?.valid && (Email?.dirty ||Email?.touched)">
+    <div [hidden]="!Email?.errors?.['required']">
+      email is required
+    </div>
+    <div [hidden]="!Email?.errors?.['pattern']">
+      invalid email id
+    </div>
+  </div>
   <label for="Mobile" style="float:left;">Mobile</label>
   <input type="number" id="Mobile" name="Mobile" class="form-control mb-4"formControlName="Mobile">
   <label for="City" style="float:left;">City</label>
   <input type="text" id="City" name="City" class="form-control mb-4"formControlName="City">
+  <div *ngIf="!City?.valid && (City?.dirty ||City?.touched)">
+    <div [hidden]="!City?.errors?.['required']">
+      City is required
+    </div>
+    </div>
   <label for="State" style="float:left;">State</label>
   <input type="text" id="State" name="State" class="form-control mb-4"formControlName="State">
+  <div *ngIf="!State?.valid && (State?.dirty ||State?.touched)">
+    <div [hidden]="!State?.errors?.['required']">
+      State is required
+    </div>
+    </div>
   <label for="dob" style="float:left;">Date of Birth</label>
   <input type="date" id="dob" name="dob" class="form-control mb-4"formControlName="Dob">
   <label for="Qual" style="float:left;">Qualification</label>
@@ -32,6 +55,14 @@ height: inherit;
   <input type="number" id="YOC" name="YOC" class="form-control mb-4"formControlName="Year">  
   <label for="pass" style="float:left;">Password</label>
   <input type="text" name="pass" id="Password" class="form-control mb-4"formControlName="Password">
+  <div *ngIf="!Password?.valid && (Password?.dirty ||Password?.touched)">
+    <div [hidden]="!Password?.errors?.['required']">
+      Password is required
+    </div>
+    <div [hidden]="!Password?.errors?.['pattern']">
+      invalid Password
+    </div>
+    </div>
   <button mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>
 </form>
   </mdb-card-body>

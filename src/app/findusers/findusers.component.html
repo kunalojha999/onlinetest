@@ -1,0 +1,51 @@
+<mdb-card *ngIf="viewusers===false" style="
+width: 50%;
+height: inherit;
+  position: relative;
+  left: 28%;
+  margin-left: -50px;
+  top: 20%;
+  margin-top: -40px;">
+  <mdb-card-body style="height: inherit; width:80%; position: relative;
+  left: 15%;
+  margin-left: -50px;
+  top: 20%;
+  margin-top: 50px;">
+<form class="text-center"  [formGroup]="userForm" (ngSubmit)="submitform()" novalidate>
+  <p class="h4 mb-4">Find Users</p>
+  <input type="string" class="form-control mb-4" placeholder="Enter State" formControlName="state">
+  <input type="string" class="form-control mb-4" placeholder="Enter City" formControlName="city">
+  <br>
+<!--  <div>  
+    <p class="d-flex justify-content-around" style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">  
+      {{errorMessage}}  
+    </p>  
+  </div>-->  
+  <button mdbBtn color="info" block="true" class="my-4" type="submit">Find</button>
+</form>
+  </mdb-card-body>
+</mdb-card>
+    <div *ngIf="viewusers===true" style="margin-top: 40px;left: 50%;
+    margin-left:300px; background: rgb(255, 255, 255);">
+    <table mdbTable style="width: 80%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" border="1">
+      <thead class="bg-info text-white">
+        <tr>
+          <th scope="col" style="text-align: center;">Name</th>
+          <th scope="col" style="text-align: center;">Email</th>
+          <th scope="col" style="text-align: center;">Phone Number</th>
+          <th scope="col" style="text-align: center;">Qualification</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let u of users">
+        <tr mdbTableCol>
+          <td style="text-align: center;">{{u.name}}</td>
+          <td style="text-align: center;">{{u.email}}</td>
+          <td style="text-align: center;">{{u.mobile}}</td>
+          <td style="text-align: center;">{{u.qualification}}</td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
+  <div *ngIf="viewusers===true" style="text-align:center ;">
+  <button mdbBtn color="info" class="my-4" (click)="return()">Return to Search</button>
+  </div>

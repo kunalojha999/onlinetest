@@ -24,8 +24,15 @@ namespace onlinetestapi.Controllers
       if (result == null)
       {
         db.Users.Add(u);
-        db.SaveChanges();
-        return Ok();
+        try {
+          db.SaveChanges();
+          return Ok();
+        }
+        catch(Exception e)
+        {
+          return BadRequest(); 
+        }
+        
       }
       else
         return BadRequest("User exists");
@@ -51,18 +58,24 @@ namespace onlinetestapi.Controllers
       {
         result.Password = user.Password;
         db.Users.Update(result);
+        try { 
         db.SaveChanges();
         return Ok();
+        }
+        catch (Exception e)
+        {
+          return BadRequest();
+        }
       }
       else
         return BadRequest("User Not Found");
     }
 
     [HttpGet]
-    [Route("view")]
-    public IActionResult getall()
+    public IActionResult getbyid(string state,string city)
     {
-      return Ok(db.Users);
+      return Ok(db.Users.Where(x =>x.State==state&&x.City==city));
     }
+
   }
 }

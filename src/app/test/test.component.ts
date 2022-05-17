@@ -14,16 +14,18 @@ export class TestComponent implements OnInit {
   report:Report=new Report()
   testsubmit:boolean=false
   questions!:Question[]
+  l1:Question[]=[]
+  l2:Question[]=[]
+  l3:Question[]=[]
   email!:string|null
   subid!:number
   score:number=0
   level:number=1
-  selectedchoice!:string
+  selectedchoice!:string|null
   questionno:number=0
   clearchoice:boolean=true
   timeLeft: number =0;
-  min:number=20;
-  hour:number=0;
+  min!:number
   interval:any;
   doredirect:boolean=false;
   test:number=1
@@ -35,20 +37,62 @@ export class TestComponent implements OnInit {
       this.subid=data[0].subid
       console.log(data)
       console.log(this.questions)
+      for (let index = 0; index < this.questions.length; index++) {
+        if(this.questions[index].level=='1'){
+        this.l1.push(this.questions[index]); 
+        }
+      else if(this.questions[index].level=='2'){
+        this.l2.push(this.questions[index]);
+      }
+      else if(this.questions[index].level=='3'){
+        this.l3.push(this.questions[index]);
+      }
+      }
+      console.log(this.l1)
+      console.log(this.l2)
+      console.log(this.l3)
+      this.min=2*this.questions.length
     })
     this.email=sessionStorage.getItem('Email')
   }
   increase(){
-    console.log(this.questions[this.questionno].answer)
-    if(this.selectedchoice===this.questions[this.questionno].answer){
+    if(this.selectedchoice==null){
+      alert('please select a choice')
+    }
+    else{
+    if(this.level==1){
+    console.log(this.l1[this.questionno].answer)
+    if(this.selectedchoice===this.l1[this.questionno].answer){
       this.score=this.score+10
     }
     console.log('score='+this.score)
     this.questionno=this.questionno+1
   }
+  else if(this.level==2){
+    console.log(this.l2[this.questionno].answer)
+    console.log(this.selectedchoice)
+    if(this.selectedchoice===this.l2[this.questionno].answer){
+      console.log(this.selectedchoice)
+      this.score=this.score+10
+    }
+    console.log('score='+this.score)
+    this.questionno=this.questionno+1
+  }
+  else if(this.level==3){
+    console.log(this.l3[this.questionno].answer)
+    if(this.selectedchoice===this.l3[this.questionno].answer){
+      this.score=this.score+10
+    }
+    console.log('score='+this.score)
+    this.questionno=this.questionno+1
+  }}
+  this.selectedchoice=null
+  }
   submit(){   
   if(this.level==3){
+    this.increase()
     this.testsubmit=true
+    this.questionno=0
     console.log('inside submit')
     this.test=3
     this.report.score=this.score
@@ -57,9 +101,26 @@ export class TestComponent implements OnInit {
     this.report.useremail=this.email
     this.rservice.createreport(this.report).subscribe(res=>{console.log(res)});
   }
-  else if(this.score>=20){
+  else if(this.level==1){
     this.increase()
+    if(this.score>=20){
     this.level=this.level+1
+    this.questionno=0}
+    else{
+      this.testsubmit=true
+      this.test=3
+      this.report.score=this.score
+      this.report.level=this.level
+      this.report.subid=this.subid
+      this.report.useremail=this.email
+      this.rservice.createreport(this.report).subscribe(res=>{console.log(res)});
+    }
+  }
+  else if(this.level==2){
+    this.increase()
+    if(this.score>=40){
+    this.level=this.level+1
+    this.questionno=0
   }
   else{
     this.testsubmit=true
@@ -69,6 +130,7 @@ export class TestComponent implements OnInit {
     this.report.subid=this.subid
     this.report.useremail=this.email
     this.rservice.createreport(this.report).subscribe(res=>{console.log(res)});
+  }
   }
   }
 
@@ -84,7 +146,7 @@ export class TestComponent implements OnInit {
     console.log(this.report)
     this.rservice.createreport(this.report).subscribe(res=>{console.log("Report created")});}
     
-  },1200000);
+  },this.min*60*1000);
     this.interval = setInterval(() => {
       if(this.timeLeft > 0&&this.min>=0) {
         this.timeLeft--;
@@ -93,10 +155,6 @@ export class TestComponent implements OnInit {
         this.min--;
         this.timeLeft=60;
       }
-      if(this.min==0&&this.hour>0){
-        this.hour--;
-        this.min=1;
-      } 
     },1000)
   }
 }

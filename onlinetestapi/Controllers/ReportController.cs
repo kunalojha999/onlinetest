@@ -21,8 +21,14 @@ namespace onlinetestapi.Controllers
     public IActionResult addreport(Reports r)
     {
         db.Reports.Add(r);
+      try { 
         db.SaveChanges();
         return Ok();
+      }
+      catch (Exception e)
+      {
+        return BadRequest();
+      }
     }
     [HttpGet("{useremail}/{subid}")]
     public IActionResult GetInfo(int subid, string useremail)

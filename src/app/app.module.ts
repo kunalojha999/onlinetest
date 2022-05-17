@@ -19,6 +19,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { TestComponent } from './test/test.component';
 import { UserreportComponent } from './userreport/userreport.component';
 import { ResetuserpasswordComponent } from './resetuserpassword/resetuserpassword.component';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AddquestionComponent } from './addquestion/addquestion.component';
+import { RemovequestionComponent } from './removequestion/removequestion.component';
+import { FindusersComponent } from './findusers/findusers.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +35,12 @@ import { ResetuserpasswordComponent } from './resetuserpassword/resetuserpasswor
     TestComponent,
     UserreportComponent,
     ResetuserpasswordComponent,
+    AdminloginComponent,
+    AddquestionComponent,
+    RemovequestionComponent,
+    FindusersComponent,
+    AboutusComponent,
+    AdminhomeComponent,
   ],
   imports: [
     BrowserModule,

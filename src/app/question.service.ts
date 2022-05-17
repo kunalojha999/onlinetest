@@ -17,4 +17,11 @@ export class QuestionService {
   getById(subid:number): Observable<Question[]> {
     return this.httpClient.get<Question[]>(this.apiserver + '/' + subid) 
   }
+  create(ques:Question): Observable<Question> {
+    return this.httpClient.post<Question>(this.apiserver,JSON.stringify(ques),
+     this.httpOptions)
+  }
+  delete(id:number){
+    return this.httpClient.delete<Question>(this.apiserver+'/' + id, this.httpOptions)
+  }
 }

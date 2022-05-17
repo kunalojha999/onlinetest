@@ -17,4 +17,7 @@ export class SubjectService {
   getAll():Observable<Subjectt[]>{
     return this.httpClient.get<Subjectt[]>(this.apiserver);
   }
+  getbyname(subname:string): Observable<Subjectt> {
+    return this.httpClient.get<Subjectt>(this.apiserver + '/' + subname) 
+  }
 }

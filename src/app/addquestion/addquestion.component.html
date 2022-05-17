@@ -1,0 +1,73 @@
+<mdb-card *ngIf="viewques===false" style="
+width: 50%;
+height: inherit;
+  position: relative;
+  left: 28%;
+  margin-left: -50px;
+  top: 20%;
+  margin-top: -40px;">
+  <mdb-card-body style="height: inherit; width:80%; position: relative;
+  left: 15%;
+  margin-left: -50px;
+  top: 20%;
+  margin-top: 30px;">
+<form class="text-center"  [formGroup]="subForm" (ngSubmit)="subjectform()" novalidate>
+  <p class="h4 mb-4">Add Question</p>
+  <br>
+  <select  id="subname" name="subname" formControlName="Subname" class="form-control mb-4">
+    <option value="" disabled selected hidden>Select Subject</option>
+    <option value="Java">Java</option>
+    <option value="SQL">SQL</option>
+    <option value="PHP">PHP</option>
+    <option value="C/C++">C/C++</option>
+    <option value="Python">Python</option>
+    <option value="C#/.Net">C#/.Net</option>
+  </select>
+  <br>
+<!--  <div>  
+    <p class="d-flex justify-content-around" style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">  
+      {{errorMessage}}  
+    </p>  
+  </div>-->  
+  <button mdbBtn color="info" class="my-4" type="submit">Select</button>
+</form>
+  </mdb-card-body>
+</mdb-card>
+<mdb-card *ngIf="viewques===true" style="
+width: 50%;
+height: inherit;
+  position: relative;
+  left: 28%;
+  margin-left: -50px;
+  top: 20%;
+  margin-top: -120px;">
+  <mdb-card-body style="height: inherit; width:80%; position: relative;
+  left: 15%;
+  margin-left: -50px;
+  top: 20%;
+  margin-top: 50px;">
+<form class="text-center"  [formGroup]="quesForm" (ngSubmit)="questionform()" novalidate>
+  <p class="h4 mb-4">Add Question</p>
+  <input type="string" class="form-control mb-4" placeholder="Enter Question" formControlName="body">
+  <br>
+  <input type="string" class="form-control mb-4" placeholder="Enter answer" formControlName="answer">
+  <br>
+  <input type="number" class="form-control mb-4" placeholder="Enter level" formControlName="level">
+  <br>
+  <input type="string" class="form-control mb-4" placeholder="Enter Choice 1" formControlName="c1">
+  <br>
+  <input type="string" class="form-control mb-4" placeholder="Enter Choice 2" formControlName="c2">
+  <br>
+  <input type="string" class="form-control mb-4" placeholder="Enter Choice 3" formControlName="c3">
+  <br>
+  <input type="string" class="form-control mb-4" placeholder="Enter Choice 4" formControlName="c4">
+<!--  <div>  
+    <p class="d-flex justify-content-around" style="color:#E92626;font-size:20px;font-weight:normal" Class="success" align="left">  
+      {{errorMessage}}  
+    </p>  
+  </div>-->  
+  <button mdbBtn color="info" block="true" class="my-4" type="submit">Add</button>
+  <button mdbBtn color="info" block="true" class="my-4" (click)="cancel()">Cancel</button>
+</form>
+  </mdb-card-body>
+</mdb-card>

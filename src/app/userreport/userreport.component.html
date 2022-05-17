@@ -1,6 +1,6 @@
 <div *ngIf="viewreport===false">
-<h2 style="text-align:center; margin-top: 40px; margin-left:40px ;">Choose from the given list of reports to view your performance in a test</h2>
-  <table style="width: 50%;
+<!--<h2 style="text-align:center; margin-top: 40px; margin-left:40px ;">Choose from the given list of reports to view your performance in a test</h2>-->
+ <!-- <table style="width: 50%;
   height: inherit;
     position: relative;
     left: 30%;
@@ -9,19 +9,31 @@
   <mdb-card-body>
     <tr>
       <td style="font-size: 30px;">{{s.subname}}</td>
-      <td style="padding-top:30px; padding-left:30px;"><button mdbBtn color="info" block="true" class="my-4" (click)="getsubname(s.id);getreports()">View Report</button></td>  
+      <td style="padding-top:30px; padding-left:100px;"><button mdbBtn color="info" class="my-4" (click)="getsubname(s.id);getreports()">View Report</button></td>  
     </tr>
-    <tr>
-      <td>{{s.description}}</td>
-    </tr>
-    <br>
     <br>
   </mdb-card-body>
  </mdb-card>
-  </table>
+  </table>-->
+  <div *ngIf="viewreport===false" style="margin-top: 40px;left: 50%;
+    margin-left:380px; background: rgb(255, 255, 255);">
+    <table mdbTable style="width: 70%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" border="1">
+      <thead class="bg-info text-white">
+        <tr>
+          <th scope="col" colspan="2" style="text-align: center;">Choose from the given list of reports to view your performance in a test</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let s of subjects">
+        <tr mdbTableCol>
+          <td style="text-align: center;padding-top: 40px;">{{s.subname}}</td>
+          <td style="text-align: center;"><button mdbBtn color="info" (click)="getsubname(s.id);getreports()">View Report</button></td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
 </div>
 <div *ngIf="viewreport===true" style="text-align:center;">
-  <p style="text-align:center; margin-top: 40px; margin-left:30px ;font-size:30px ;font-weight: bold;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">{{subname}} test reports</p>
+<!--  <p style="text-align:center; margin-top: 40px; margin-left:30px ;font-size:30px ;font-weight: bold;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">{{subname}} test reports</p>
     <br>
     <table style="width: 50%;
     height: inherit;
@@ -42,6 +54,26 @@
       <br>
     </mdb-card-body>
   </mdb-card>
-    </table>
+    </table>-->
+    <div *ngIf="viewreport===true" style="margin-top: 40px;left: 50%;
+    margin-left:380px; background: rgb(255, 255, 255);">
+    <table mdbTable style="width: 70%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" border="1">
+      <thead class="bg-info text-white">
+        <tr>
+          <th scope="col" colspan="2" style="text-align: center;">{{subname}} test reports</th>
+        </tr>
+        <tr>
+          <th scope="col" style="text-align: center;">Score</th>
+          <th scope="col" style="text-align: center;">Level</th>
+        </tr>
+      </thead>
+      <tbody  *ngFor="let r of reports">
+        <tr mdbTableCol>
+          <td style="text-align: center;">{{r.score}}</td>
+          <td style="text-align: center;">{{r.level}}</td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
     <button mdbBtn color="info" style="margin-left:30px ;" class="my-4" (click)="returntoreport()" routerLink="/report">Return to Report</button>
   </div> 

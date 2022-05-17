@@ -18,4 +18,7 @@ export class UserregisterService {
     return this.httpClient.post<User>(this.apiserver,JSON.stringify(user),
      this.httpOptions)
   }
+  getbystate(state:string,city:string):Observable<User[]> {
+    return this.httpClient.get<User[]>(this.apiserver + '?state=' + state +'&city='+city) 
+  }
 }

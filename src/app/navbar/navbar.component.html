@@ -1,5 +1,5 @@
 <!--Navbar-->
-<mdb-card *ngIf="!checkempty()">
+<mdb-card *ngIf="!checkempty()&&!acheckempty()">
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false" Height="400">
 
     <!-- Navbar brand -->
@@ -14,7 +14,7 @@
           <a routerLink="home" class="nav-link waves-light" mdbWavesEffect style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>About Us</a>
+          <a routerLink="aboutus" class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>About Us</a>
         </li>
       </ul>
       <button routerLink="login" type="button" mdbBtn color="dark" mdbWavesEffect>Login</button>
@@ -40,7 +40,7 @@
               <a routerLink="home" class="nav-link waves-light" mdbWavesEffect style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>About Us</a>
+              <a routerLink="aboutus" class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>About Us</a>
             </li>
             <li class="nav-item">
                 <a routerLink="report" class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>Report</a>
@@ -53,4 +53,35 @@
       
       </mdb-navbar>
     </mdb-card>
+    <mdb-card *ngIf="acheckempty()&&!checkempty()">
+      <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark indigo" [containerInside]="false" Height="400">
+      
+          <!-- Navbar brand -->
+          <mdb-navbar-brand style="margin-left:20px ;" ><a style="font-size:35px;font-weight: 400; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;" class="navbar-brand" href="#">QuickTest</a></mdb-navbar-brand>
+        
+          <!-- Collapsible content -->
+          <links>
+        
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a routerLink="adminhome" class="nav-link waves-light" mdbWavesEffect style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">Admin Home</a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="addquestion" class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>Add Question</a>
+              </li>
+              <li class="nav-item">
+                  <a routerLink="removequestion" class="nav-link waves-light" style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;" mdbWavesEffect>Remove Question</a>
+                </li>
+                <li class="nav-item">
+                  <a routerLink="findusers" class="nav-link waves-light" mdbWavesEffect style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">Find Users</a>
+                </li>
+            </ul>
+            <div style="color:white ;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">Welcome,{{aemail}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            <button (click)="alogout()" type="button" mdbBtn color="dark" mdbWavesEffect>Logout</button>
+          </links>
+          <!-- Collapsible content -->
+        
+        </mdb-navbar>
+      </mdb-card>
       <!--/.Navbar-->

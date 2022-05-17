@@ -22,5 +22,28 @@ namespace onlinetestapi.Controllers
     {
       return Ok(db.Questions.Where(x=>x.Subid==subid));
     }
+    [HttpPost]
+    public IActionResult addquestion(Questions q)
+    {
+      db.Questions.Add(q);
+      try
+      {
+        db.SaveChanges();
+        return Ok();
+      }
+      catch(Exception e)
+      {
+        return BadRequest();
+      }
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult delquestion(int id)
+    {
+      var q = db.Questions.FirstOrDefault(x => x.Id == id);
+      db.Questions.Remove(q);
+      db.SaveChanges();
+      return Ok();
+    }
   }
 }
