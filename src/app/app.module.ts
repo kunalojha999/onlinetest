@@ -25,6 +25,7 @@ import { RemovequestionComponent } from './removequestion/removequestion.compone
 import { FindusersComponent } from './findusers/findusers.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { ContactusComponent } from './contactus/contactus.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
     FindusersComponent,
     AboutusComponent,
     AdminhomeComponent,
+    ContactusComponent,
   ],
   imports: [
     BrowserModule,

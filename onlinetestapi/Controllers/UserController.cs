@@ -72,7 +72,7 @@ namespace onlinetestapi.Controllers
     }
 
     [HttpGet]
-    public IActionResult getbyid(string state,string city)
+    public IActionResult getbylocation(string state,string city)
     {
       return Ok(db.Users.Where(x =>x.State==state&&x.City==city));
     }

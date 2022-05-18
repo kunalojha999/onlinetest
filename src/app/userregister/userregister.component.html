@@ -60,7 +60,13 @@ height: inherit;
       Password is required
     </div>
     <div [hidden]="!Password?.errors?.['pattern']">
-      invalid Password
+      invalid Password<br>
+      Your Password Must have-<br>
+      Start with a capital letter<br>
+      A small letter<br>
+      A number<br>
+      A special character<br>
+      It needs to be 8 characters or more in length<br>
     </div>
     </div>
   <button mdbBtn color="info" block="true" class="my-4" type="submit">Register</button>

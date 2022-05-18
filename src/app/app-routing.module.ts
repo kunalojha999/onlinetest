@@ -4,6 +4,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { AddquestionComponent } from './addquestion/addquestion.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { ContactusComponent } from './contactus/contactus.component';
 import { FindusersComponent } from './findusers/findusers.component';
 import { RemovequestionComponent } from './removequestion/removequestion.component';
 import { ResetuserpasswordComponent } from './resetuserpassword/resetuserpassword.component';
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path:'removequestion',component:RemovequestionComponent},
   {path:'findusers',component:FindusersComponent},
   {path:'aboutus',component:AboutusComponent},
-  {path:'adminhome',component:AdminhomeComponent}
+  {path:'adminhome',component:AdminhomeComponent},
+  {path:'contactus',component:ContactusComponent}
 ];
 
 @NgModule({
